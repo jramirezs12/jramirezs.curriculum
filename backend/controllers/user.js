@@ -14,15 +14,14 @@ const registerUser = async(req, res) => {
 
     let hash = await bcrypt.hash(req.body.password, 10);
 
-    let role = await Role.findOne({ name: "user" });
-    if (!role)
-        return res.status(400).send("Process failed: No role was assigned to user");
+    //let role = await Role.findOne({ name: "user" });
+    //if (!role)
+    //    return res.status(400).send("Process failed: No role was assigned to user");
 
     let user = new User({
         name: req.body.name,
         email: req.body.email,
         password: hash,
-        roleId: role._id,
         bdStatus: true,
     });
 
